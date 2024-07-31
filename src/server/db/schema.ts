@@ -18,9 +18,9 @@ import type { AdapterAccount } from "@auth/core/adapters";
  */
 
 // Change name of copy_hub_t3 to create prefixes for tables:
-export const pgTable = pgTableCreator((name) => `copy_hub_t3_${name}`);
+export const pgTable = pgTableCreator((name) => name);
 
-export const roleEnum = pgEnum('role', ["USER", "OWNER"])
+export const roleEnum = pgEnum("role", ["USER", "OWNER"]);
 
 export const users = pgTable("user", {
   id: text("id").notNull().primaryKey(),
@@ -28,7 +28,7 @@ export const users = pgTable("user", {
   email: text("email").notNull(),
   emailVerified: timestamp("emailVerified", { mode: "date" }),
   image: text("image"),
-  role: roleEnum('role').default("USER")
+  role: roleEnum("role").default("USER"),
 });
 
 export const accounts = pgTable(
